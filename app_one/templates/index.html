@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+
+        <h1 class="text-center mt-5">Welcome</h1>
+
+        <section class="text-danger text-center">
+            {% if messages %}
+            <ul class="list-unstyled d-inline-block">
+                {% for message in messages %}
+                <li class="text-left">
+                    {{ message }}
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </section>
+
+        <div class="row pt-5">
+
+            <div class="col-md mb-2">
+                <div>
+                    <div class="card-header">
+                        <h3 class="text-center">Login</h3>
+                    </div>
+                    <div class="card-body">
+                        <form action="/login" method="POST">
+                            {% csrf_token %}
+
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input class="form-control" name="email">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input class="form-control" type="password" name="password">
+                            </div>
+
+                            <button class="btn btn-info" type="submit">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md">
+                <div>
+                    <div class="card-header">
+                        <h3 class="text-center">Register</h3>
+                    </div>
+                    <div class="card-body">
+                        <form action="/register" method="POST">
+                            {% csrf_token %}
+
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input class="form-control" name="first_name">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input class="form-control" name="last_name">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input class="form-control" name="email">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input class="form-control" type="password" name="password">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Confirm Password</label>
+                                <input class="form-control" type="password" name="password_confirm">
+                            </div>
+
+                            <button class="btn btn-info" type="submit">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

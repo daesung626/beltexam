@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Make a new wish here!</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <section class="text-danger text-center">
+        {% if messages %}
+        <ul class="list-unstyled d-inline-block">
+            {% for message in messages %}
+            <li class="text-left">
+                {{ message }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </section>
+
+    <h1>Hello {{logged_in_user.first_name}}! Make a wish!</h1>
+
+
+    <a href="/logout" class="btn btn-danger">Logout</a>
+    <div class="border border-success" style="width: 20%; margin-left: 15px;">
+        <form action="/create_wish" method="POST" style="padding: 15px;">
+            {% csrf_token %}
+            I wish for: <input type="text" name="item_name" placeholder="Go">
+            <br>
+            Description <input type="text" name="description">
+            <a href="/wishes" class="btn btn-primary">Cancel</a>
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+
+</html>
